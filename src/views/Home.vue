@@ -3,6 +3,7 @@
     <NavBar />
     <Slider />
     <MainCategory />
+    <BestProducts />
     <Footer />
   </div>
 </template>
@@ -11,6 +12,7 @@
 import NavBar from "@/components/NavBar.vue"
 import Slider from "@/components/Slider.vue"
 import MainCategory from "@/components/MainCategory.vue"
+import BestProducts from "@/components/BestProducts.vue"
 import Footer from "@/components/Footer.vue"
 
 export default {
@@ -19,6 +21,7 @@ export default {
     NavBar,
     Slider,
     MainCategory,
+    BestProducts,
     Footer
   },
 }
