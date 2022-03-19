@@ -3,7 +3,8 @@
         <h1 class="headings-yus">Best Products</h1>
         <div class="grid md:grid-cols-4 grid-cols-2 gap-6">
             <div v-for="product in products" :key="product.id"  class="bg-white rounded-lg px-4 my-4 cursor-pointer yus-shadow">
-                <a href="#">
+                <!-- <a :href="`https://testapi.kahioja.com/product/${product.slug}`"> -->
+                <a :href="`/product/${product.slug}`">
                     <img class="w-64 mx-auto py-4" :src="product.images[0].url" :alt="product.name">
                     <!-- Product Details  -->
                     <div class="py-3">
