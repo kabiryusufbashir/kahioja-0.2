@@ -50,7 +50,7 @@
         methods:{
             async getProducts(){
                 try {
-                    let response = await fetch("https://instafood.mrteey.com/products")
+                    let response = await fetch("https://testapi.kahioja.com/products")
                     this.data = await response.json()
                     this.products = this.data.products 
                     // console.log(this.products)

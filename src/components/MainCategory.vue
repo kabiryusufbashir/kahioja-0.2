@@ -37,6 +37,6 @@
 
 <script>
     export default {
-        name: "MainCategory"
+        name: "MainCategory",
     }
 </script>
