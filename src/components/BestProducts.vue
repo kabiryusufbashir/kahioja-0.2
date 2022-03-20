@@ -54,7 +54,6 @@
                     let response = await fetch("https://testapi.kahioja.com/products")
                     this.data = await response.json()
                     this.products = this.data.products 
-                    // console.log(this.products)
                 } catch (error) {
                     console.log(error)
                 }

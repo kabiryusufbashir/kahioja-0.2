@@ -16,7 +16,7 @@
 
                 <div id="slider" class="hidden md:flex flex-col">
                     <div class="w-full border rounded-xl shadow mb-2 px-10 py-8">
-                        <img class="object-cover product-gallery product-active" :src="`https://dashboard.kahioja.com/assets/images/products/${productimage}`" :alt="`${ productname }`">
+                        <img class="object-cover product-gallery product-active" :src="`https://dashboard.kahioja.com/assets/images/products/${product.image}`" :alt="`${ product.name }`">
                     </div>
                     <div :key="productphoto" v-for="productphoto in productgallery">    
                         <div class="w-full border rounded-xl shadow mb-2 px-10 py-8">
@@ -29,13 +29,13 @@
             </div>
             <!-- Product Image  -->
             <div class="md:col-span-2 w-full border rounded-xl shadow">
-                <img id="featured-product" class="w-4/5 mx-auto py-6" :src="`https://dashboard.kahioja.com/assets/images/products/${productimage}`" :alt="productname">
+                <img id="featured-product" class="w-4/5 mx-auto py-6" :src="`https://dashboard.kahioja.com/assets/images/products/${product.image}`" :alt="product.name">
             </div>
             <!-- Product Details  -->
             <div class="rounded-xl px-10 py-8 border md:col-span-2 shadow">
                 <div class="py-3">
                     <div v-if="isLoading" class="loader mx-auto mt-5"></div>
-                    <h1 class="product-details-title">{{ url_data }}</h1>
+                    <h1 class="product-details-title">{{ product_slug }}</h1>
                     <div class="flex items-center">
                         <span class="product-curr-price"><b>{{ productcurrprice }}</b></span>
                         <span class="product-prev-price"><b>{{ productprevprice }}</b></span>
@@ -150,15 +150,31 @@ import NavBar from "@/components/NavBar.vue"
     export default {
         name: "ViewProduct",
         mounted(){
-            this.url_data = this.$route.params.slug
+            this.product_slug = this.$route.params.slug
         },
         data(){
             return{
-                url_data: null
+                product_slug: null,
+                data: [],
+                product: []
             }
         },
         components: {
             NavBar,
+        },
+        methods:{
+            async getProduct(){
+                try {
+                    let response = await fetch(`"https://testapi.kahioja.com/product/so-klin"`)
+                    this.product = JSON.parse(JSON.stringify(response))
+                    console.log(this.product)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        },
+        created(){
+            this.getProduct()
         }
         
    }
