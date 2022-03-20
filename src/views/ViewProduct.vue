@@ -165,7 +165,7 @@ import NavBar from "@/components/NavBar.vue"
         methods:{
             async getProduct(){
                 try {
-                    let response = await fetch(`"https://testapi.kahioja.com/product/so-klin"`)
+                    let response = await fetch(`"https://testapi.kahioja.com/product/${this.$route.params.slug}"`)
                     this.product = JSON.parse(JSON.stringify(response))
                     console.log(this.product)
                 } catch (error) {
