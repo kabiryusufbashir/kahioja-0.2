@@ -5,13 +5,13 @@
             Popular Product Categories
         </h1>
         <div class="grid md:grid-cols-6 grid-cols-3 gap-6 my-8 text-center">
-            <div v-for="(cate, index) in uniqueCategory" :key="index.id"  class="cursor-pointer">
+            <div v-for="(cate, index) in categories" :key="index.id"  class="cursor-pointer">
                 <div>
                     <a href="#">
                         <div class="cate-yus rounded-full border-8 md:border-24">
-                            <img class="mx-auto" :src="cate.categories[0].image" :alt="cate.categories[0].name">
+                            <img class="mx-auto" :src="cate.image" :alt="cate.name">
                         </div>
-                        <span class="cate-title-yus">{{ cate.categories[0].name  }}</span>
+                        <span class="cate-title-yus">{{ cate.name  }}</span>
                     </a>
                 </div>
             </div>
@@ -31,9 +31,9 @@
         methods:{
             async getCategories(){
                 try {
-                    let response = await fetch("https://testapi.kahioja.com/products")
+                    let response = await fetch("https://testapi.kahioja.com/categories")
                     this.data = await response.json()
-                    this.categories = this.data.products
+                    this.categories = this.data.categories
                     // console.log(this.categories)
                 } catch (error) {
                     console.log(error)
@@ -42,15 +42,6 @@
         },
         created(){
             this.getCategories()
-        },
-        computed:{
-            uniqueCategory(){
-                return this.categories.reduce((seed, current) => {
-                    return Object.assign(seed, {
-                        [current.name] : current
-                    })
-                }, {})
-            }
         }
     }
 </script>

@@ -35,7 +35,7 @@
             <div class="rounded-xl px-10 py-8 border md:col-span-2 shadow">
                 <div class="py-3">
                     <div v-if="isLoading" class="loader mx-auto mt-5"></div>
-                    <h1 class="product-details-title">{{ productname }}</h1>
+                    <h1 class="product-details-title">{{ url_data }}</h1>
                     <div class="flex items-center">
                         <span class="product-curr-price"><b>{{ productcurrprice }}</b></span>
                         <span class="product-prev-price"><b>{{ productprevprice }}</b></span>
@@ -148,9 +148,18 @@
 import NavBar from "@/components/NavBar.vue"
 
     export default {
-       name: "ViewProduct",
-       components: {
-        NavBar,
-    },
+        name: "ViewProduct",
+        mounted(){
+            this.url_data = this.$route.params.slug
+        },
+        data(){
+            return{
+                url_data: null
+            }
+        },
+        components: {
+            NavBar,
+        }
+        
    }
 </script>

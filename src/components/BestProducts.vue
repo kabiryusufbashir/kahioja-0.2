@@ -4,7 +4,7 @@
         <div class="grid md:grid-cols-4 grid-cols-2 gap-6">
             <div v-for="product in products" :key="product.id"  class="bg-white rounded-lg px-4 my-4 cursor-pointer yus-shadow">
                 <!-- <a :href="`https://testapi.kahioja.com/product/${product.slug}`"> -->
-                <a :href="`/product/${product.slug}`">
+                <router-link :to="{name:'Product', params:{ slug:`${product.slug}` }}">
                     <img class="w-64 mx-auto py-4" :src="product.images[0].url" :alt="product.name">
                     <!-- Product Details  -->
                     <div class="py-3">
@@ -23,7 +23,7 @@
                             &nbsp;<div>1 Day Delivery within Kano</div>
                         </div>
                     </div>
-                </a>
+                </router-link>
                 <div>
                     <button @click="addToBag()" class="mx-auto relative top-5 md:top-8 btn-yus rounded-full w-full md:w-2/3 flex flex-row justify-center items-center p-2 text-white">
                         <div class="card-bag-label">
